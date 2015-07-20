@@ -38,7 +38,7 @@
     // 设置背景色
     self.backgroundColor = [UIColor colorWithRed:1.000 green:0.960 blue:0.951 alpha:1.000];
     
-    self.contentInset = UIEdgeInsetsMake(0, 0, 114, 0);
+    self.contentInset = UIEdgeInsetsMake(0, 0, 154, 0);
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

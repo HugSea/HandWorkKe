@@ -15,11 +15,8 @@
 // json字典
 @property (nonatomic, strong) NSDictionary *jsonDict;
 // 回调的网络请求数据
-@property (nonatomic, copy) void(^backCallRequestData)(NSDictionary *dict);
+@property (nonatomic, copy) void(^backCallRequestData)(NSDictionary *dict, NSString *identifying);
 
-@property (nonatomic, copy) void(^backCallRequestDataAgain)(NSDictionary *dict);
-
-- (void)sendRequestWithURL:(NSString *)url;
-- (void)sendRequestAgainWithURL:(NSString *)url;
+- (void)sendRequestWithURL:(NSString *)url andIdentifier:(NSString *)identifier;
 
 @end

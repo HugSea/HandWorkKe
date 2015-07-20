@@ -47,6 +47,8 @@
 
 @implementation AFHTTPSessionManager
 
+@dynamic responseSerializer;
+
 + (instancetype)manager {
     return [[[self class] alloc] initWithBaseURL:nil];
 }
@@ -290,7 +292,7 @@
     if (!configuration) {
         NSString *configurationIdentifier = [decoder decodeObjectOfClass:[NSString class] forKey:@"identifier"];
         if (configurationIdentifier) {
-            configuration = [NSURLSessionConfiguration backgroundSessionConfiguration:configurationIdentifier];
+            configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:configurationIdentifier];
         }
     }
 

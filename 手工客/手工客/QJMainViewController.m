@@ -79,64 +79,76 @@
     [self.view addSubview:self.scrollView];
     self.scrollView.pagingEnabled = YES;
     self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * 2, 0);
+    self.scrollView.bounces = NO;
     
-#warning mark
     __weak typeof(self) selfVc = self;
-    self.backCallRequestData = ^(NSDictionary *dict){
-        selfVc.jsonDict = dict;
-        NSDictionary *dataDic = selfVc.jsonDict[@"data"];
-        
-        // 添加collectionView
-        QJCollectionView *collectionView = [QJCollectionView collectionView];
-        collectionView.backgroundColor = [UIColor whiteColor];
-        collectionView.slides = dataDic[@"slide"];
-        collectionView.navs = dataDic[@"nav"];
-        collectionView.advs = dataDic[@"adv"];
-        
-        QJBigModel *bigModel = [[QJBigModel alloc] init];
-        collectionView.sectionArray = [[NSMutableArray alloc] init];
-        // 互动课堂
-        bigModel = [QJBigModel bigModelWithArray:dataDic[@"classs"] andClassName:[QJClasss class]];
-        [collectionView.sectionArray addObject:bigModel];
-        
-        // 限时抢购
-        bigModel = [QJBigModel bigModelWithArray:dataDic[@"products"] andClassName:[QJProducts class]];
-        [collectionView.sectionArray addObject:bigModel];
-        
-        // 达人推荐
-        bigModel = [QJBigModel bigModelWithDict:dataDic[@"daren"] andClassName:[QJDaren class]];
-        [collectionView.sectionArray addObject:bigModel];
-        
-        // 手工专题
-        bigModel = [QJBigModel bigModelWithArray:dataDic[@"topic"] andClassName:[QJTopic class]];
-        [collectionView.sectionArray addObject:bigModel];
-        
-        // 热门教程
-        bigModel = [QJBigModel bigModelWithArray:dataDic[@"course"] andClassName:[QJCourse class]];
-        [collectionView.sectionArray addObject:bigModel];
-        
-        [selfVc.scrollView addSubview:collectionView];
-    };
-    self.urlString = @"http://m.shougongke.com/index.php?&c=index&a=indexnew&vid=9&";
-    [self sendRequestWithURL:self.urlString];
-    
-    self.backCallRequestDataAgain = ^(NSDictionary *dict){
-        NSArray *dataArray = dict[@"data"];
-        
-        // 添加 dynamicStateView
-        QJDynamicStateView *dynamicStateView = [[QJDynamicStateView alloc] init];
-        dynamicStateView.frame = CGRectMake(mainSize.width, 0, mainSize.width, mainSize.height);
-        // 取模型
-        dynamicStateView.dynamicStates = [[NSMutableArray alloc] init];
-        for (NSDictionary *dict in dataArray) {
-            QJDynamicStateModel *model = [QJDynamicStateModel dynamicStateModelWithDict:dict];
-            [dynamicStateView.dynamicStates addObject:model];
+    self.backCallRequestData = ^(NSDictionary *dict, NSString *identifier){
+        if ([identifier isEqualToString:@"Main"]) {
+            selfVc.jsonDict = dict;
+            NSDictionary *dataDic = selfVc.jsonDict[@"data"];
+            
+            // 添加collectionView
+            QJCollectionView *collectionView = [QJCollectionView collectionView];
+            collectionView.backgroundColor = [UIColor whiteColor];
+            collectionView.slides = dataDic[@"slide"];
+            collectionView.navs = dataDic[@"nav"];
+            collectionView.advs = dataDic[@"adv"];
+            
+            QJBigModel *bigModel = [[QJBigModel alloc] init];
+            collectionView.sectionArray = [[NSMutableArray alloc] init];
+            // 头部视图
+            bigModel = [QJBigModel bigModelWithArray:nil andClassName:[QJMainHeadView class]];
+            [collectionView.sectionArray addObject:bigModel];
+            
+            // 互动课堂
+            bigModel = [QJBigModel bigModelWithArray:dataDic[@"classs"] andClassName:[QJClasss class]];
+            [collectionView.sectionArray addObject:bigModel];
+            
+            // 限时抢购
+            bigModel = [QJBigModel bigModelWithArray:dataDic[@"products"] andClassName:[QJProducts class]];
+            [collectionView.sectionArray addObject:bigModel];
+            
+            // 达人推荐
+            bigModel = [QJBigModel bigModelWithDict:dataDic[@"daren"] andClassName:[QJDaren class]];
+            [collectionView.sectionArray addObject:bigModel];
+            
+            // 手工专题
+            bigModel = [QJBigModel bigModelWithArray:dataDic[@"topic"] andClassName:[QJTopic class]];
+            [collectionView.sectionArray addObject:bigModel];
+            
+            // 热门教程
+            bigModel = [QJBigModel bigModelWithArray:dataDic[@"course"] andClassName:[QJCourse class]];
+            [collectionView.sectionArray addObject:bigModel];
+            
+            [selfVc.scrollView addSubview:collectionView];
         }
-        
-        [selfVc.scrollView addSubview:dynamicStateView];
+        else if ([identifier isEqualToString:@"dynamic"]) {
+            NSArray *dataArray = dict[@"data"];
+            
+            // 添加 dynamicStateView
+            QJDynamicStateView *dynamicStateView = [[QJDynamicStateView alloc] init];
+            dynamicStateView.frame = CGRectMake(mainSize.width, 0, mainSize.width, mainSize.height);
+            // 取模型
+            dynamicStateView.dynamicStates = [[NSMutableArray alloc] init];
+            for (NSDictionary *dict in dataArray) {
+                QJDynamicStateModel *model = [QJDynamicStateModel dynamicStateModelWithDict:dict];
+                [dynamicStateView.dynamicStates addObject:model];
+            }
+            
+            [selfVc.scrollView addSubview:dynamicStateView];
+
+        } else {
+            return ;
+        }
     };
+    
+    // 请求主页数据
+    self.urlString = @"http://m.shougongke.com/index.php?&c=index&a=indexnew&vid=9&";
+    [self sendRequestWithURL:self.urlString andIdentifier:@"Main"];
+    
+    // 请求动态数据
     self.urlString = @"http://d.shougongke.com/index.php?c=Mobnotice&a=dynami&";
-    [self sendRequestAgainWithURL:self.urlString];
+    [self sendRequestWithURL:self.urlString andIdentifier:@"dynamic"];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

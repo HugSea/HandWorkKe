@@ -155,9 +155,6 @@
         CGFloat smNameY = smIconY + (smIconH - smNameH) * 0.5;
         smNameLab.frame = CGRectMake(smNameX, smNameY, smNameW, smNameH);
     }
-    
-    
-#warning mark
 
     // 时间
     UILabel *timeLab = [[UILabel alloc] init];

@@ -84,7 +84,6 @@
  */
 @interface AFHTTPRequestOperationManager : NSObject <NSSecureCoding, NSCopying>
 
-@property(nonatomic,strong) NSString *name;
 /**
  The URL used to monitor reachability, and construct requests from relative paths in methods like `requestWithMethod:URLString:parameters:`, and the `GET` / `POST` / et al. convenience methods.
  */

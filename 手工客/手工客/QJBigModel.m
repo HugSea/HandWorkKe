@@ -19,10 +19,15 @@
     if (self = [super init]) {
         NSString *classStr = NSStringFromClass(className);
         self.dataArray = [[NSMutableArray alloc] init];
-        if ([classStr isEqualToString:@"QJClasss"]) {
+        if ([classStr isEqualToString:@"QJMainHeadView"]) {
+            self.type = CellTypeHeaderView;
+            self.cellSize = CGSizeMake(1, 1);
+            self.itemCount = 1;
+        } else if ([classStr isEqualToString:@"QJClasss"]) {
             self.type = CellTypeClasss;
             self.title = @"互动课堂";
             self.cellSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * 0.5, 188);
+            self.itemCount = array.count;
             for (NSDictionary *dict in array) {
                 QJClasss *classs = [QJClasss classsWithDict:dict];
                 [self.dataArray addObject:classs];
@@ -31,6 +36,7 @@
             self.type = CellTypeProducts;
             self.title = @"限时抢购";
             self.cellSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 256);
+            self.itemCount = 1;
             for (NSDictionary *dict in array) {
                 QJProducts *product = [QJProducts productsWithDict:dict];
                 [self.dataArray addObject:product];
@@ -39,6 +45,7 @@
             self.type = CellTypeTopic;
             self.title = @"手工专题";
             self.cellSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 220);
+            self.itemCount = array.count;
             for (NSDictionary *dict in array) {
                 QJTopic *topic = [QJTopic topicWithDict:dict];
                 [self.dataArray addObject:topic];
@@ -47,6 +54,7 @@
             self.type = CellTypeCourse;
             self.title = @"热门教程";
             self.cellSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * 0.5, 190);
+            self.itemCount = array.count;
             for (NSDictionary *dict in array) {
                 QJCourse *course = [QJCourse courseWithDict:dict];
                 [self.dataArray addObject:course];
@@ -64,6 +72,7 @@
     if (self = [super init]) {
         NSString *classStr = NSStringFromClass(className);
         self.dataArray = [[NSMutableArray alloc] init];
+        self.itemCount = 1;
         if ([classStr isEqualToString:@"QJDaren"]) {
             self.type = CellTypeDaren;
             self.title = @"达人推荐";

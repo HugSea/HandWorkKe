@@ -10,7 +10,8 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    CellTypeClasss = 0,
+    CellTypeHeaderView,
+    CellTypeClasss,
     CellTypeProducts,
     CellTypeDaren,
     CellTypeTopic,
@@ -19,10 +20,26 @@ typedef enum {
 
 @interface QJBigModel : NSObject
 
+/**
+ *  cell类型
+ */
 @property (nonatomic, assign) CellType type;
+/**
+ *  模型数组
+ */
 @property (nonatomic, strong) NSMutableArray *dataArray;
+/**
+ *  headerView标题
+ */
 @property (nonatomic, copy) NSString *title;
+/**
+ *  cell宽高
+ */
 @property (nonatomic, assign) CGSize cellSize;
+/**
+ *  每组对应item个数
+ */
+@property (nonatomic, assign) NSInteger itemCount;
 
 + (instancetype)bigModelWithArray:(NSArray *)array andClassName:(Class)className;
 - (instancetype)initWithArray:(NSArray *)array andClassName:(Class)className;

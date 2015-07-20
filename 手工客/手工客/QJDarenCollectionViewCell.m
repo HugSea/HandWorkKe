@@ -63,12 +63,12 @@
     // 性别
     UIImageView *genderView = [[UIImageView alloc] init];
     [bgView addSubview:genderView];
-    NSString *imageStr = [daren.gender isEqualToString:@"0"] ? @"pp_women" : @"pp_men";
+    NSString *imageStr = daren.gender == 0 ? @"pp_women" : @"pp_men";
     genderView.image = [UIImage imageNamed:imageStr];
     CGFloat genderX = CGRectGetMaxX(nameLab.frame) + 15;
     CGFloat genderH = 14;
     CGFloat genderY = (nameSize.height - genderH) * 0.5 + nameY;
-    CGFloat genderW = [daren.gender isEqualToString:@"0"] ? genderH - 4 : genderH;
+    CGFloat genderW = daren.gender == 0 ? genderH - 4 : genderH;
     genderView.frame = CGRectMake(genderX, genderY, genderW, genderH);
     
     // 地区

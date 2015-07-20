@@ -98,7 +98,7 @@
 @property (nonatomic, copy) NSString *coursecollect;
 @property (nonatomic, copy) NSString *uname;
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *gender;
+@property (nonatomic, assign) int gender;
 @property (nonatomic, copy) NSString *region;
 @property (nonatomic, copy) NSString *daren;
 @property (nonatomic, assign) int hand_teacher;

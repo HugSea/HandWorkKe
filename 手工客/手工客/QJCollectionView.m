@@ -78,74 +78,70 @@
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.sectionArray.count + 1;
+    return self.sectionArray.count;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (0 == section) return 1;
-    QJBigModel *bigModel = self.sectionArray[section - 1];
-    if (bigModel.type == CellTypeProducts) {
-        return 1;
-    }
-    return bigModel.dataArray.count;
+    QJBigModel *bigModel = self.sectionArray[section];
+    return bigModel.itemCount;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (0 == indexPath.section) {
-        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        return cell;
-    } else {
-        QJBigModel *bigModel = self.sectionArray[indexPath.section - 1];
-        switch (bigModel.type) {
-            case CellTypeClasss:
-            {
-                QJClassroomCollectionViewCell *classCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([QJClassroomCollectionViewCell class]) forIndexPath:indexPath];
-                // 移除子View,防止重叠
-                [classCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-                QJClasss *classs = bigModel.dataArray[indexPath.item];
-                classCell.classes = classs;
-                return classCell;
-                break;
-            }
-            case CellTypeProducts:
-            {
-                QJProductsCollectionViewCell *prodectCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([QJProductsCollectionViewCell class]) forIndexPath:indexPath];
-                [prodectCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-                QJProducts *product = bigModel.dataArray[bigModel.dataArray.count - 1];
-                prodectCell.products = product;
-                return prodectCell;
-                break;
-            }
-            case CellTypeDaren:
-            {
-                QJDarenCollectionViewCell *darenCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([QJDarenCollectionViewCell class]) forIndexPath:indexPath];
-                [darenCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-                QJDaren *daren = bigModel.dataArray[indexPath.item];
-                darenCell.daren = daren;
-                return darenCell;
-                break;
-            }
-            case CellTypeTopic:
-            {
-                QJTopicCollectionViewCell *topicCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([QJTopicCollectionViewCell class]) forIndexPath:indexPath];
-                [topicCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-                QJTopic *topic = bigModel.dataArray[indexPath.item];
-                topicCell.topic = topic;
-                return topicCell;
-                break;
-            }
-            case CellTypeCourse:
-            {
-                QJCourseCollectionViewCell *courseCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([QJCourseCollectionViewCell class]) forIndexPath:indexPath];
-                [courseCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-                QJCourse *course = bigModel.dataArray[indexPath.item];
-                courseCell.course = course;
-                return courseCell;
-                break;
-            }
-            default:
-                break;
+    QJBigModel *bigModel = self.sectionArray[indexPath.section];
+    switch (bigModel.type) {
+        case CellTypeHeaderView:
+        {
+            UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+            return cell;
         }
+        case CellTypeClasss:
+        {
+            QJClassroomCollectionViewCell *classCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([QJClassroomCollectionViewCell class]) forIndexPath:indexPath];
+            // 移除子View,防止重叠
+            [classCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            QJClasss *classs = bigModel.dataArray[indexPath.item];
+            classCell.classes = classs;
+            return classCell;
+            break;
+        }
+        case CellTypeProducts:
+        {
+            QJProductsCollectionViewCell *prodectCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([QJProductsCollectionViewCell class]) forIndexPath:indexPath];
+            [prodectCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            QJProducts *product = bigModel.dataArray[bigModel.dataArray.count - 1];
+            prodectCell.products = product;
+            return prodectCell;
+            break;
+        }
+        case CellTypeDaren:
+        {
+            QJDarenCollectionViewCell *darenCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([QJDarenCollectionViewCell class]) forIndexPath:indexPath];
+            [darenCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            QJDaren *daren = bigModel.dataArray[indexPath.item];
+            darenCell.daren = daren;
+            return darenCell;
+            break;
+        }
+        case CellTypeTopic:
+        {
+            QJTopicCollectionViewCell *topicCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([QJTopicCollectionViewCell class]) forIndexPath:indexPath];
+            [topicCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            QJTopic *topic = bigModel.dataArray[indexPath.item];
+            topicCell.topic = topic;
+            return topicCell;
+            break;
+        }
+        case CellTypeCourse:
+        {
+            QJCourseCollectionViewCell *courseCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([QJCourseCollectionViewCell class]) forIndexPath:indexPath];
+            [courseCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            QJCourse *course = bigModel.dataArray[indexPath.item];
+            courseCell.course = course;
+            return courseCell;
+            break;
+        }
+        default:
+            break;
     }
     return nil;
 }
@@ -168,7 +164,7 @@
         NSString *ID = NSStringFromClass([QJSubsHeaderCollectionReusableView class]);
         QJSubsHeaderCollectionReusableView *subsHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:ID forIndexPath:indexPath];
         [subsHeaderView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-        QJBigModel *bigModel = self.sectionArray[indexPath.section - 1];
+        QJBigModel *bigModel = self.sectionArray[indexPath.section];
         subsHeaderView.title = bigModel.title;
         
         return subsHeaderView;
@@ -187,12 +183,8 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return CGSizeMake(1, 1);
-    } else {
-        QJBigModel *bigModel = self.sectionArray[indexPath.section - 1];
-        return bigModel.cellSize;
-    }
+    QJBigModel *bigModel = self.sectionArray[indexPath.section];
+    return bigModel.cellSize;
 }
 
 @end

@@ -21,7 +21,6 @@
 		5072775A1B567D0C0037C7E2 /* QJBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507277591B567D0C0037C7E2 /* QJBaseViewController.m */; };
 		5072775D1B568C900037C7E2 /* QJCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5072775C1B568C900037C7E2 /* QJCollectionView.m */; };
 		507277711B56A2200037C7E2 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 507277601B56A2200037C7E2 /* AFNetworkActivityIndicatorManager.m */; };
-		507277721B56A2200037C7E2 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 507277611B56A2200037C7E2 /* README.md */; };
 		507277731B56A2200037C7E2 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 507277631B56A2200037C7E2 /* UIActivityIndicatorView+AFNetworking.m */; };
 		507277741B56A2200037C7E2 /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 507277651B56A2200037C7E2 /* UIAlertView+AFNetworking.m */; };
 		507277751B56A2200037C7E2 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 507277671B56A2200037C7E2 /* UIButton+AFNetworking.m */; };
@@ -33,6 +32,7 @@
 		5089E31F1B58A87100975C41 /* QJHotCourseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5089E31E1B58A87100975C41 /* QJHotCourseCollectionView.m */; };
 		5089E3221B58AED400975C41 /* QJHotCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5089E3211B58AED400975C41 /* QJHotCourseCell.m */; };
 		5089E3261B58B0C600975C41 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5089E3251B58B0C600975C41 /* UIColor+Extension.m */; };
+		5089E3301B5938C200975C41 /* QJTopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5089E32F1B5938C200975C41 /* QJTopMenuView.m */; };
 		508B3CBE1B5803F000931F61 /* QJSubsHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508B3CBD1B5803F000931F61 /* QJSubsHeaderCollectionReusableView.m */; };
 		508B3CC11B5808B700931F61 /* QJDynamicStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 508B3CC01B5808B700931F61 /* QJDynamicStateModel.m */; };
 		508B3CC71B58119800931F61 /* QJDynamicStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508B3CC61B58119800931F61 /* QJDynamicStateView.m */; };
@@ -96,7 +96,6 @@
 		5072775C1B568C900037C7E2 /* QJCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJCollectionView.m; sourceTree = "<group>"; };
 		5072775F1B56A2200037C7E2 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
 		507277601B56A2200037C7E2 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		507277611B56A2200037C7E2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		507277621B56A2200037C7E2 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
 		507277631B56A2200037C7E2 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
 		507277641B56A2200037C7E2 /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -120,6 +119,8 @@
 		5089E3211B58AED400975C41 /* QJHotCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJHotCourseCell.m; sourceTree = "<group>"; };
 		5089E3241B58B0C600975C41 /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
 		5089E3251B58B0C600975C41 /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
+		5089E32E1B5938C200975C41 /* QJTopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJTopMenuView.h; sourceTree = "<group>"; };
+		5089E32F1B5938C200975C41 /* QJTopMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJTopMenuView.m; sourceTree = "<group>"; };
 		508B3CBC1B5803F000931F61 /* QJSubsHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJSubsHeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		508B3CBD1B5803F000931F61 /* QJSubsHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJSubsHeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		508B3CBF1B5808B700931F61 /* QJDynamicStateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJDynamicStateModel.h; sourceTree = "<group>"; };
@@ -239,7 +240,6 @@
 			children = (
 				5072775F1B56A2200037C7E2 /* AFNetworkActivityIndicatorManager.h */,
 				507277601B56A2200037C7E2 /* AFNetworkActivityIndicatorManager.m */,
-				507277611B56A2200037C7E2 /* README.md */,
 				507277621B56A2200037C7E2 /* UIActivityIndicatorView+AFNetworking.h */,
 				507277631B56A2200037C7E2 /* UIActivityIndicatorView+AFNetworking.m */,
 				507277641B56A2200037C7E2 /* UIAlertView+AFNetworking.h */,
@@ -266,6 +266,8 @@
 				5089E31E1B58A87100975C41 /* QJHotCourseCollectionView.m */,
 				5089E3201B58AED400975C41 /* QJHotCourseCell.h */,
 				5089E3211B58AED400975C41 /* QJHotCourseCell.m */,
+				5089E32E1B5938C200975C41 /* QJTopMenuView.h */,
+				5089E32F1B5938C200975C41 /* QJTopMenuView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -648,7 +650,6 @@
 				5097772F1B57D023006CB264 /* QJTopicCollectionViewCell.m in Sources */,
 				5089E3261B58B0C600975C41 /* UIColor+Extension.m in Sources */,
 				507277341B5674020037C7E2 /* QJMainModel.m in Sources */,
-				507277721B56A2200037C7E2 /* README.md in Sources */,
 				509777271B57A4F0006CB264 /* QJProductsCollectionViewCell.m in Sources */,
 				509298C21B5653B90044B9A8 /* QJHandWorkViewController.m in Sources */,
 				5097771F1B575335006CB264 /* QJClassroomCollectionViewCell.m in Sources */,
@@ -671,6 +672,7 @@
 				5072774D1B567C1B0037C7E2 /* AFHTTPRequestOperation.m in Sources */,
 				5089E31C1B58A73700975C41 /* QJCourseModel.m in Sources */,
 				5097772B1B57BD95006CB264 /* QJDarenCollectionViewCell.m in Sources */,
+				5089E3301B5938C200975C41 /* QJTopMenuView.m in Sources */,
 				509777331B57D62C006CB264 /* QJCourseCollectionViewCell.m in Sources */,
 				5072774F1B567C1B0037C7E2 /* AFHTTPSessionManager.m in Sources */,
 				507277751B56A2200037C7E2 /* UIButton+AFNetworking.m in Sources */,

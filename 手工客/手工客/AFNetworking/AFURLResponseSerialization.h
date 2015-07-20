@@ -54,7 +54,7 @@
  */
 @interface AFHTTPResponseSerializer : NSObject <AFURLResponseSerialization>
 
-@property(nonatomic,strong) NSString *testName;
+@property(nonatomic,strong) NSString *identifier;
 
 /**
  The string encoding used to serialize parameters.
